@@ -1,0 +1,38 @@
+{
+    "name": "alexpechkarev/laravel-places-autocomplete",
+    "description": "Easily integrate the Places (New) Autocomplete - JavaScript library into Laravel Blade views. Provides a user-friendly way to search for and retrieve detailed address information in any web application.",
+    "keywords": [
+        "laravel",
+        "google autocomplete",
+        "google places api",
+        "address autocomplete",
+        "places autocomplete",
+        "address search",
+        "blade component"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Pechkarev",
+            "email": "alexpechkarev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+        "illuminate/view": "^8.0|^9.0|^10.0|^11.0|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PlacesAutocomplete\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PlacesAutocomplete\\PlacesAutocompleteServiceProvider"
+            ]
+        }
+    }
+}
