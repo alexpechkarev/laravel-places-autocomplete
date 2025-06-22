@@ -5,11 +5,13 @@
 {{-- This component initializes the PlacesAutocomplete library with the provided options and parameters. --}}
 @props([
     'containerId' => 'places-autocomplete',
+    'rootDivId' => 'places-autocomplete-root',
     'googleMapsApiKey' => config('places_autocomplete.google_maps_api_key'),
     'options' => [],
     'requestParams' => [],
     'fetchFields' => [],
     'loadScriptTag' => true,
+    'rootDivId' => 'places-autocomplete-root',
 ])
 
 {{-- Ensure the container ID is valid --}}
@@ -44,8 +46,8 @@
                     const event = new CustomEvent('pac-response', {
                         detail: placeDetails
                     });
-                    document.getElementById('{{ $containerId }}').dispatchEvent(event);
-                    console.log('Place Selected (from Blade component):', placeDetails);
+                    document.getElementById('{{ $rootDivId }}').dispatchEvent(event);
+                    //console.log('Place Selected (from Blade component):', placeDetails);
                     // Or define global callback names that users can implement
                     // if (typeof window.handlePacResponse_{{ str_replace('-', '_', $containerId) }} === 'function') {
                     //    window.handlePacResponse_{{ str_replace('-', '_', $containerId) }}(placeDetails);
