@@ -17,6 +17,7 @@ use \Illuminate\Support\Str;
 class PlacesAutocompleteComponent extends Component
 {
     public string $containerId; // Unique ID for the container element
+    public string $rootDivId; // ID for the root div element
     public string $googleMapsApiKey; // Google Maps API key for Places Autocomplete
     public array $options; // Options for the Places Autocomplete component
     public array $requestParams; // Request parameters for the Places Autocomplete component
@@ -28,6 +29,7 @@ class PlacesAutocompleteComponent extends Component
      * Class constructor.
      *
      * @param string $containerId
+     * @param string $rootDivId
      * @param string $googleMapsApiKey
      * @param array $options
      * @param array $requestParams
@@ -36,6 +38,7 @@ class PlacesAutocompleteComponent extends Component
      */
     public function __construct(
         string $containerId = 'pac_container',
+        string $rootDivId = 'places-autocomplete-root',
         string $googleMapsApiKey = '',
         array $options = [],
         array $requestParams = [],
@@ -45,6 +48,8 @@ class PlacesAutocompleteComponent extends Component
     
         // Ensure unique ID
         $this->containerId = $containerId . '-' . Str::random(5);
+
+        $this->rootDivId = $rootDivId;
         // Set Google Maps API key, options, request parameters, fetch fields, and script loading option
         $this->googleMapsApiKey = !empty($googleMapsApiKey) ? $googleMapsApiKey : config('places_autocomplete.google_maps_api_key');
         // Merge with default options, request parameters, and fetch fields from config
@@ -79,6 +84,7 @@ class PlacesAutocompleteComponent extends Component
     {
         return view('vendor.places-autocomplete.places-autocomplete', [
             'containerId' => $this->containerId,
+            'rootDivId' => $this->rootDivId,
             'googleMapsApiKey' => $this->googleMapsApiKey,
             'options' => $this->options,
             'requestParams' => $this->requestParams,
@@ -87,3 +93,4 @@ class PlacesAutocompleteComponent extends Component
         ]);
     }
 }
+// End of PlacesAutocompleteComponent class
