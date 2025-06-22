@@ -16,3 +16,14 @@ In your Blade view, you can use the `<x-places-autocomplete>` component to rende
         :options="['placeholder' => 'Start typing your address...', 'clear_input' => false, 'debounce' => 100]"  />
         
 ```
+
+
+## Support
+
+[Please open an issue on GitHub](https://github.com/alexpechkarev/laravel-places-autocomplete/issues)
+
+## License
+
+Collection of Google Maps API Web Services for Laravel is released under the MIT License. See the bundled
+[LICENSE](https://github.com/alexpechkarev/laravel-places-autocomplete/blob/master/LICENSE)
+file for details.
