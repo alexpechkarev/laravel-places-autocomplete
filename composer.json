@@ -3,12 +3,16 @@
     "description": "Easily integrate the Places (New) Autocomplete - JavaScript library into Laravel Blade views. Provides a user-friendly way to search for and retrieve detailed address information in any web application.",
     "keywords": [
         "laravel",
-        "google autocomplete",
+        "blade",
+        "blade-component",
+        "google-maps",
         "google places api",
-        "address autocomplete",
+        "google autocomplete",
         "places autocomplete",
+        "address autocomplete",
         "address search",
-        "blade component"
+        "php",
+        "javascript"
     ],
     "license": "MIT",
     "authors": [
