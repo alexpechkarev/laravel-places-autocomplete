@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Places Autocomplete for Laravel | A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Places Autocomplete for Laravel" />
+<meta name="author" content="Alexander Pechkarev" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup." />
+<meta property="og:description" content="A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup." />
+<link rel="canonical" href="http://localhost:4000/laravel-places-autocomplete/" />
+<meta property="og:url" content="http://localhost:4000/laravel-places-autocomplete/" />
+<meta property="og:site_name" content="Places Autocomplete for Laravel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Places Autocomplete for Laravel" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alexander Pechkarev"},"description":"A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup.","headline":"Places Autocomplete for Laravel","name":"Places Autocomplete for Laravel","url":"http://localhost:4000/laravel-places-autocomplete/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/laravel-places-autocomplete/assets/css/style.css?v=HEAD">
+    <link rel="shortcut icon" type="image/svg+xml" href="/laravel-places-autocomplete/favicon.svg">
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Places Autocomplete for Laravel</h1>
+      <h2 class="project-tagline">A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup.</h2>
+      
+        <a href="https://github.com/alexpechkarev/laravel-places-autocomplete" class="btn">View on GitHub</a>
+      
+      
+        <a href="https://github.com/alexpechkarev/laravel-places-autocomplete/zipball/gh-pages" class="btn">Download .zip</a>
+        <a href="https://github.com/alexpechkarev/laravel-places-autocomplete/tarball/gh-pages" class="btn">Download .tar.gz</a>
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      
+<p><a href="https://github.com/alexpechkarev/laravel-places-autocomplete/stargazers"><img src="https://img.shields.io/github/stars/alexpechkarev/laravel-places-autocomplete.svg?style=flat-square" alt="GitHub Stars" /></a>
+<a href="https://packagist.org/packages/alexpechkarev/laravel-places-autocomplete"><img src="https://img.shields.io/packagist/v/alexpechkarev/laravel-places-autocomplete.svg?style=flat-square" alt="Latest Version on Packagist" /></a>
+<a href="https://packagist.org/packages/alexpechkarev/laravel-places-autocomplete"><img src="https://img.shields.io/packagist/dt/alexpechkarev/laravel-places-autocomplete.svg?style=flat-square" alt="Total Downloads" /></a>
+<a href="https://github.com/alexpechkarev/laravel-places-autocomplete/blob/master/LICENSE"><img src="https://img.shields.io/github/license/alexpechkarev/laravel-places-autocomplete.svg?style=flat-square" alt="GitHub License" /></a></p>
+
+<p>A Laravel package that provides a simple Blade component to integrate the Google Places Autocomplete functionality into your application with minimal setup.</p>
+
+<p>It handles API loading, session tokens for cost-effective usage, and fetching place details, allowing you to focus on building your application.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><strong>Simple Integration:</strong> Add address autocomplete to any form with a single Blade component.</li>
+  <li><strong>Cost-Effective:</strong> Automatically handles session tokens to reduce Google API costs.</li>
+  <li><strong>Customizable:</strong> Configure the component’s behavior through an options array.</li>
+  <li><strong>Event-Driven:</strong> Dispatches a custom event with the selected place data for easy handling in your frontend JavaScript.</li>
+</ul>
+
+<h2 id="live-demo">Live Demo</h2>
+
+<p><a href="demo.html" class="btn">View Live Demo</a></p>
+
+<p><img src="places-autocomplete-js.gif" alt="A video demonstrating the Places Autocomplete JavaScript component in action, showing address suggestions and selection." /></p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>Laravel 9.x or higher</li>
+  <li>A Google Maps API Key with the <strong>Places API</strong> enabled. You can get one from the <a href="https://console.cloud.google.com/google/maps-apis">Google Cloud Console</a>.</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>You can install the package via Composer:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require alexpechkarev/laravel-places-autocomplete
+</code></pre></div></div>
+
+<h2 id="configuration">Configuration</h2>
+
+<ol>
+  <li>Publish the configuration file. This will create a <code class="language-plaintext highlighter-rouge">config/places-autocomplete.php</code> file where you can set default options. The view file will be published to <code class="language-plaintext highlighter-rouge">resources/views/vendor/places-autocomplete</code> and the JavaScript files to <code class="language-plaintext highlighter-rouge">public/vendor/places-autocomplete/</code>.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan vendor:publish <span class="nt">--provider</span><span class="o">=</span><span class="s2">"PlacesAutocomplete</span><span class="se">\P</span><span class="s2">lacesAutocompleteServiceProvider"</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add your Google Maps API key to your <code class="language-plaintext highlighter-rouge">.env</code> file. This is a required step.</li>
+</ol>
+
+<pre><code class="language-dotenv">// filepath: .env
+GOOGLE_MAPS_API_KEY="YOUR_API_KEY_HERE"
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="1-add-the-component">1. Add the Component</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">&lt;x-places-autocomplete&gt;</code> component in your Blade views. Because the component’s root element has a dynamically generated ID, the recommended approach is to wrap it in your own <code class="language-plaintext highlighter-rouge">div</code> with a stable ID. This makes it easy to target with JavaScript.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// filepath: resources/views/your-form.blade.php</span>
+<span class="o">&lt;</span><span class="n">form</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">"address"</span><span class="o">&gt;</span><span class="nc">Address</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">"address-wrapper"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">x</span><span class="o">-</span><span class="n">places</span><span class="o">-</span><span class="n">autocomplete</span>
+            <span class="n">root</span><span class="o">-</span><span class="n">div</span><span class="o">-</span><span class="n">id</span><span class="o">=</span><span class="s2">"address-wrapper"</span>
+            <span class="o">:</span><span class="n">options</span><span class="o">=</span><span class="s2">"[
+                'placeholder' =&gt; 'Start typing your address...',
+            ]"</span>
+        <span class="o">/&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"mt-4"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">"city"</span><span class="o">&gt;</span><span class="nc">City</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">id</span><span class="o">=</span><span class="s2">"city"</span> <span class="n">name</span><span class="o">=</span><span class="s2">"city"</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-control"</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">"postcode"</span><span class="o">&gt;</span><span class="nc">Postcode</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">id</span><span class="o">=</span><span class="s2">"postcode"</span> <span class="n">name</span><span class="o">=</span><span class="s2">"postcode"</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-control"</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-handle-the-response">2. Handle the Response</h3>
+
+<p>When a user selects an address, the component dispatches a <code class="language-plaintext highlighter-rouge">pac-response</code> custom event on its root <code class="language-plaintext highlighter-rouge">div</code>. You can listen for this event to receive the place data.</p>
+
+<p>Add the following JavaScript to your application.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// filepath: resources/js/app.js</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Listen for the custom event emitted by the PlacesAutocomplete component</span>
+  <span class="nb">document</span>
+    <span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">address-wrapper</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">pac-response</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">placeDetails</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">;</span>
+      <span class="c1">//console.log('Place Selected:', placeDetails);</span>
+
+      <span class="c1">// Populate other fields based on the selected place details</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">placeDetails</span><span class="p">.</span><span class="nx">addressComponents</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">placeDetails</span><span class="p">.</span><span class="nx">addressComponents</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">component</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">"</span><span class="s2">postal_town</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">city</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">component</span><span class="p">.</span><span class="nx">longText</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">"</span><span class="s2">postal_code</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">postcode</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">component</span><span class="p">.</span><span class="nx">longText</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+  <span class="c1">// Handle errors from the PlacesAutocomplete component</span>
+  <span class="nb">document</span>
+    <span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">address-wrapper</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">pac-error</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Autocomplete Error:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="component-options">Component Options</h2>
+
+<p>You can customize the component by passing an <code class="language-plaintext highlighter-rouge">:options</code> array. These options are passed to the underlying <a href="https://github.com/alexpechkarev/places-autocomplete-js">places-autocomplete-js</a> library.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">placeholder</code></td>
+      <td>string</td>
+      <td>Placeholder text for the input field.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">debounce</code></td>
+      <td>integer</td>
+      <td>Delay in milliseconds before sending a request (default: 100).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clear_input</code></td>
+      <td>boolean</td>
+      <td>Whether to clear the input after selection.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">language</code></td>
+      <td>string</td>
+      <td>The language code for results (e.g., ‘en-GB’).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For a full list of options, please refer to the <a href="https://github.com/alexpechkarev/places-autocomplete-js?tab=readme-ov-file#configuration">JavaScript library’s documentation</a>.</p>
+
+<p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">name</code> attribute of the generated <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> is not currently configurable. The input’s data will not be submitted with a standard form post; you must use JavaScript to handle the <code class="language-plaintext highlighter-rouge">pac-response</code> event and populate your form fields as shown in the example above.</p>
+
+<h2 id="support">Support</h2>
+
+<p>If you encounter any issues or have questions, please <a href="https://github.com/alexpechkarev/laravel-places-autocomplete/issues">open an issue on GitHub</a>.</p>
+
+<h2 id="license">License</h2>
+
+<p>This package is open-source software licensed under the <a href="https://github.com/alexpechkarev/laravel-places-autocomplete/blob/master/LICENSE">MIT license</a>.</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/alexpechkarev/laravel-places-autocomplete">laravel-places-autocomplete</a> is maintained by <a href="https://github.com/alexpechkarev">alexpechkarev</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>

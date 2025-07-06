@@ -1,0 +1,27 @@
+.DS_Store
+node_modules
+vendor
+# Ignore bundler config
+/.bundle
+# Ignore log files and temp files.
+/log/*
+/tmp
+# Ignore coverage reports.
+/coverage
+# Ignore database files.
+/db/*.sqlite3
+Gemfile.lock
+# Ignore environment files.
+/.env
+# Ignore secrets.
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+# Ignore IDE specific files.
+.idea
+.vscode
+# Ignore system files.
+Thumbs.db
+# Ignore OS generated files.
+.DS_Store
